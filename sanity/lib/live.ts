@@ -1,20 +1,13 @@
 import { createElement } from "react";
 import { createClient } from "next-sanity";
 import { defineLive } from "next-sanity/live";
-import {
-  apiVersion,
-  dataset,
-  isSanityEnabled,
-  projectId,
-  studioUrl,
-} from "@/sanity/lib/config";
+import { apiVersion, dataset, isSanityEnabled, projectId } from "@/sanity/lib/config";
 
 const liveClient = createClient({
   apiVersion,
   dataset,
   projectId,
   useCdn: true,
-  stega: { studioUrl },
 });
 
 export const { sanityFetch, SanityLive } = defineLive({

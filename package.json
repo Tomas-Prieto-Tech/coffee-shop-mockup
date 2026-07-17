@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "studio": "sanity dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "studio:dev": "npm --prefix studio run dev",
+    "studio:deploy": "npm --prefix studio run deploy"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",

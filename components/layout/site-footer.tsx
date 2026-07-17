@@ -26,9 +26,6 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
                 {link.title}
               </Link>
             ))}
-            <Link href="/studio" className="hover:text-terracotta">
-              Studio
-            </Link>
           </div>
         </div>
       </div>
