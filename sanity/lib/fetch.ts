@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import {
   demoAnnouncement,
   demoCategories,
@@ -11,6 +12,7 @@ import {
 } from "@/lib/demo-content";
 import { isSanityEnabled } from "@/sanity/lib/config";
 import { client } from "@/sanity/lib/client";
+import { siteRevalidateSeconds } from "@/sanity/lib/env";
 import {
   activeAnnouncementQuery,
   eventBySlugQuery,
@@ -41,15 +43,30 @@ import type {
   Testimonial,
 } from "@/types/sanity";
 
+function buildFetchCacheKey(query: string, params?: Record<string, string>) {
+  const normalizedParams = params
+    ? Object.entries(params).sort(([leftKey], [rightKey]) => leftKey.localeCompare(rightKey))
+    : [];
+
+  return ["sanity", query, JSON.stringify(normalizedParams)];
+}
+
 async function safeFetch<T>(query: string, params?: Record<string, string>) {
   if (!isSanityEnabled) {
     return null;
   }
 
   try {
-    return params
-      ? await client.fetch<T>(query, params)
-      : await client.fetch<T>(query);
+    const cachedFetch = unstable_cache(
+      async () =>
+        params
+          ? client.fetch<T>(query, params)
+          : client.fetch<T>(query),
+      buildFetchCacheKey(query, params),
+      { revalidate: siteRevalidateSeconds },
+    );
+
+    return await cachedFetch();
   } catch {
     return null;
   }

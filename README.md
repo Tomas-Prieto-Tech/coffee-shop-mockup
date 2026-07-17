@@ -1,8 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a Next.js 16 app for a coffee shop site with a public website and embedded Sanity-backed content.
 
 ## Getting Started
 
-First, run the development server:
+Set the Sanity env vars before running the site. Published Sanity content on the public site refreshes automatically on roughly a 60-second window in production, without a redeploy. You can tune that interval with `SANITY_SITE_REVALIDATE_SECONDS`.
+
+```bash
+cp .env.example .env.local
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
@@ -16,9 +22,13 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sanity Env Vars
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`: Sanity project ID used by the public site.
+- `NEXT_PUBLIC_SANITY_DATASET`: Sanity dataset used by the public site.
+- `SANITY_SITE_REVALIDATE_SECONDS`: Time-based refresh window for cached public-site Sanity queries. Defaults to `60` when unset or invalid.
+- `SANITY_API_READ_TOKEN`: Optional server token for preview/live use cases.
+- `NEXT_PUBLIC_SANITY_API_READ_TOKEN`: Optional browser token for preview/live use cases.
 
 ## Learn More
 
