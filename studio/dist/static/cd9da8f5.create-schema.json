@@ -1,0 +1,896 @@
+[
+  {
+    "fields": [
+      {
+        "name": "businessName",
+        "type": "string"
+      },
+      {
+        "name": "tagline",
+        "type": "string"
+      },
+      {
+        "name": "phone",
+        "type": "string"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "name": "address",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "mapsUrl",
+        "type": "url",
+        "title": "Google Maps URL"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "instagramUrl",
+        "type": "url",
+        "title": "Instagram URL"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "tiktokUrl",
+        "type": "url",
+        "title": "TikTok URL"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "day",
+                "type": "string"
+              },
+              {
+                "name": "open",
+                "type": "string"
+              },
+              {
+                "name": "close",
+                "type": "string"
+              },
+              {
+                "name": "closed",
+                "type": "boolean"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "hours",
+        "type": "array",
+        "title": "Business Hours"
+      },
+      {
+        "name": "footerMessage",
+        "type": "text"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "internalTitle",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "text",
+        "title": "Announcement Text"
+      },
+      {
+        "name": "linkLabel",
+        "type": "string"
+      },
+      {
+        "name": "linkUrl",
+        "type": "string",
+        "title": "Link URL"
+      },
+      {
+        "initialValue": true,
+        "name": "enabled",
+        "type": "boolean"
+      },
+      {
+        "name": "startDateTime",
+        "type": "datetime",
+        "title": "Start"
+      },
+      {
+        "name": "endDateTime",
+        "type": "datetime",
+        "title": "End"
+      },
+      {
+        "initialValue": true,
+        "name": "dismissible",
+        "type": "boolean"
+      },
+      {
+        "initialValue": 1,
+        "name": "displayPriority",
+        "type": "number"
+      },
+      {
+        "options": {
+          "list": [
+            "standard",
+            "seasonal",
+            "urgent",
+            "event"
+          ]
+        },
+        "initialValue": "standard",
+        "name": "style",
+        "type": "string"
+      }
+    ],
+    "name": "announcement",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "name"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "name": "displayOrder",
+        "type": "number"
+      },
+      {
+        "initialValue": true,
+        "name": "enabled",
+        "type": "boolean"
+      }
+    ],
+    "name": "menuCategory",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Item Name"
+      },
+      {
+        "options": {
+          "source": "name"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ]
+          }
+        ],
+        "hidden": true,
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Examples: \"$4.75\" or \"From $9\"",
+        "name": "price",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "image",
+        "type": "image",
+        "title": "Picture"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "description": "Choose where this item appears on the menu page.",
+        "to": [
+          {
+            "type": "menuCategory"
+          }
+        ],
+        "name": "category",
+        "type": "reference",
+        "title": "Menu Section"
+      }
+    ],
+    "name": "menuItem",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "name": "price",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "heroImage",
+        "type": "image"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "additionalImage",
+        "type": "image"
+      },
+      {
+        "name": "availabilityStart",
+        "type": "date"
+      },
+      {
+        "name": "availabilityEnd",
+        "type": "date"
+      },
+      {
+        "initialValue": true,
+        "name": "featuredOnHomepage",
+        "type": "boolean",
+        "title": "Featured on Homepage"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "ingredients",
+        "type": "array"
+      },
+      {
+        "name": "customizationNote",
+        "type": "string"
+      },
+      {
+        "name": "buttonLabel",
+        "type": "string"
+      },
+      {
+        "name": "displayOrder",
+        "type": "number"
+      }
+    ],
+    "name": "seasonalDrink",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Event Title"
+      },
+      {
+        "options": {
+          "source": "title"
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "summary",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "level": "error",
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "of": [],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "type": "block"
+          }
+        ],
+        "name": "description",
+        "type": "array",
+        "title": "Full Description"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "mainImage",
+        "type": "image"
+      },
+      {
+        "of": [
+          {
+            "type": "image"
+          }
+        ],
+        "name": "gallery",
+        "type": "array"
+      },
+      {
+        "name": "startDateTime",
+        "type": "datetime",
+        "title": "Start Date & Time"
+      },
+      {
+        "name": "endDateTime",
+        "type": "datetime",
+        "title": "End Date & Time"
+      },
+      {
+        "name": "locationName",
+        "type": "string"
+      },
+      {
+        "name": "address",
+        "type": "string"
+      },
+      {
+        "name": "price",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "name": "registrationUrl",
+        "type": "url",
+        "title": "Registration URL"
+      },
+      {
+        "name": "registrationLabel",
+        "type": "string"
+      },
+      {
+        "name": "featured",
+        "type": "boolean"
+      },
+      {
+        "options": {
+          "list": [
+            "Upcoming",
+            "Sold out",
+            "Canceled",
+            "Completed"
+          ]
+        },
+        "name": "eventStatus",
+        "type": "string"
+      },
+      {
+        "name": "capacity",
+        "type": "number"
+      },
+      {
+        "name": "displayOrder",
+        "type": "number"
+      }
+    ],
+    "name": "event",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "title": "Alternative Text"
+      },
+      {
+        "name": "caption",
+        "type": "text"
+      },
+      {
+        "options": {
+          "list": [
+            "Drinks",
+            "Food",
+            "Our Space",
+            "Community",
+            "Events"
+          ]
+        },
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "name": "featured",
+        "type": "boolean"
+      },
+      {
+        "name": "displayOrder",
+        "type": "number"
+      },
+      {
+        "to": [
+          {
+            "type": "event"
+          }
+        ],
+        "name": "associatedEvent",
+        "type": "reference"
+      }
+    ],
+    "name": "galleryImage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "name": "customerName",
+        "type": "string"
+      },
+      {
+        "name": "customerPhoto",
+        "type": "image"
+      },
+      {
+        "name": "source",
+        "type": "string"
+      },
+      {
+        "name": "featured",
+        "type": "boolean"
+      }
+    ],
+    "name": "testimonial",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            "home",
+            "about",
+            "visit",
+            "catering"
+          ]
+        },
+        "name": "slug",
+        "type": "string",
+        "title": "Page Key"
+      },
+      {
+        "name": "eyebrow",
+        "type": "string"
+      },
+      {
+        "name": "intro",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "level": "error",
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "of": [],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "type": "block"
+          }
+        ],
+        "name": "body",
+        "type": "array"
+      }
+    ],
+    "name": "pageContent",
+    "type": "document"
+  }
+]
