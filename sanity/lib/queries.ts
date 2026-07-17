@@ -26,12 +26,69 @@ export const menuItemsQuery = defineQuery(
   }`,
 );
 export const seasonalDrinkQuery = defineQuery(
-  `*[_type == "seasonalDrink" && featuredOnHomepage == true] | order(displayOrder asc)[0]`,
+  `*[_type == "seasonalDrink" && featuredOnHomepage == true] | order(displayOrder asc)[0]{
+    _id,
+    name,
+    description,
+    price,
+    "heroImage": coalesce(heroImage.asset->url, ""),
+    "imageAlt": name,
+    "ingredients": coalesce(ingredients, []),
+    customizationNote,
+    "buttonLabel": coalesce(buttonLabel, "See seasonal drinks")
+  }`,
 );
-export const eventsQuery = defineQuery(`*[_type == "event"] | order(startDateTime asc)`);
-export const eventBySlugQuery = defineQuery(`*[_type == "event" && slug.current == $slug][0]`);
+export const eventsQuery = defineQuery(
+  `*[_type == "event"] | order(startDateTime asc){
+    _id,
+    title,
+    "slug": slug.current,
+    summary,
+    "description": coalesce(description[].children[].text, []),
+    "image": coalesce(mainImage.asset->url, ""),
+    "imageAlt": title,
+    "startsAt": startDateTime,
+    "endsAt": endDateTime,
+    locationName,
+    address,
+    price,
+    registrationLabel,
+    registrationUrl,
+    "status": lower(replace(coalesce(eventStatus, "Upcoming"), " ", "-")),
+    featured,
+    capacity
+  }`,
+);
+export const eventBySlugQuery = defineQuery(
+  `*[_type == "event" && slug.current == $slug][0]{
+    _id,
+    title,
+    "slug": slug.current,
+    summary,
+    "description": coalesce(description[].children[].text, []),
+    "image": coalesce(mainImage.asset->url, ""),
+    "imageAlt": title,
+    "startsAt": startDateTime,
+    "endsAt": endDateTime,
+    locationName,
+    address,
+    price,
+    registrationLabel,
+    registrationUrl,
+    "status": lower(replace(coalesce(eventStatus, "Upcoming"), " ", "-")),
+    featured,
+    capacity
+  }`,
+);
 export const galleryImagesQuery = defineQuery(
-  `*[_type == "galleryImage"] | order(displayOrder asc)`,
+  `*[_type == "galleryImage"] | order(displayOrder asc){
+    _id,
+    "image": coalesce(image.asset->url, ""),
+    "imageAlt": coalesce(alt, caption, "Gallery image"),
+    caption,
+    category,
+    featured
+  }`,
 );
 export const testimonialQuery = defineQuery(`*[_type == "testimonial" && featured == true][0]`);
 export const pageContentQuery = defineQuery(`*[_type == "pageContent" && slug == $slug][0]`);
