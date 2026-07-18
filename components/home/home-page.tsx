@@ -42,8 +42,8 @@ export function HomePage({ data }: { data: HomePagePayload }) {
             </div>
           </div>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div className="relative h-[24rem] overflow-hidden rounded-[2.4rem] sm:h-[32rem]">
+        <div className="grid gap-5 sm:h-[32rem] sm:grid-cols-2 sm:grid-rows-2">
+          <div className="relative h-[24rem] overflow-hidden rounded-[2.4rem] sm:row-span-2 sm:h-auto">
             <Image
               src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80"
               alt="Barista pouring espresso"
@@ -53,8 +53,8 @@ export function HomePage({ data }: { data: HomePagePayload }) {
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
           </div>
-          <div className="space-y-5 sm:pt-16">
-            <div className="relative h-48 overflow-hidden rounded-[2rem]">
+          <div className="grid gap-5 sm:row-span-2 sm:grid-rows-2">
+            <div className="relative h-48 overflow-hidden rounded-[2rem] sm:h-auto">
               <Image
                 src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
                 alt="Friends talking at a cafe table"
